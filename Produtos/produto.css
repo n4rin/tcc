@@ -1,0 +1,77 @@
+#achubaba {
+  display: flex;
+  color: white;
+}
+
+
+.fifth {
+  width: 355px;
+  height: 50px;
+  border-color: #727557;
+  border-radius: 2px;
+  color: #727557;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  -webkit-transition: color 150ms ease-in-out;
+  transition: color 150ms ease-in-out;
+}
+
+.fifth:after {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 0;
+  height: 100%;
+  background: #727557;
+  z-index: -1;
+  -webkit-transition: width 150ms ease-in-out;
+  transition: width 150ms ease-in-out;
+}
+
+.fifth:hover {
+  color: #fff;
+}
+
+.fifth:hover:after {
+  width: 110%;
+}
+
+
+
+
+
+
+
+/* SuperLargoDesktop (max: 4000, min: 3000) */
+@media (min-width: 3000px) and (max-width: 4000px) {
+  /* Insira os estilos específicos para superLargoDesktop aqui */
+
+}
+
+/* Desktop (max: 3000, min: 1024) */
+@media (min-width: 1024px) and (max-width: 3000px) {
+  /* Insira os estilos específicos para desktop aqui */
+
+}
+
+/* Tablet (max: 1024, min: 464) */
+@media (min-width: 464px) and (max-width: 1024px) {
+  /* Insira os estilos específicos para tablet aqui */
+
+}
+
+/* Mobile (max: 464, min: 0) */
+@media (max-width: 464px) {
+  /* Insira os estilos específicos para mobile aqui */
+
+  /* Exemplo: ajustar o tamanho do contêiner principal */
+  #achubaba {
+    width: 100%;
+    height: auto;
+  }
+}

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="icon" type="image/x-icon" href="../Imagens/logo.png">
+    <link rel="stylesheet" href="produto.css">
+    <title>LivaTy - Nescafé Gold</title>
+</head>
+
+<body style="background-color: #f7f3f2; color: #27211E;">
+    <!--Inicio NavBar-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top p-3 bg-dark">
+        <div class="container">
+            <form class="form-inline my-2 my-lg-0" style="margin-left: 100%;">
+                <!--Botão de login-->
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><a href="../Login/login.html"
+                        style="text-decoration: none;">Login</a></button>
+            </form>
+        </div>
+
+        <!--Div da navbar-->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown" style="position: absolute;">
+
+            <!--Navbar button, deve ser alterado para a logo do livaty quando estiver pronta-->
+            <a class="navbar-brand" href="../Pagina/telaInicial.html">LivaTy</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!--Itens da navbar-->
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Catálogo
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="../Pagina/telaChas.html">Chás</a>
+                        <a class="dropdown-item" href="../Pagina/telaCafe.html">Cafés</a>
+                        <a class="dropdown-item" href="../Pagina/telaIncenso.html">Incensos</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div style="height: 90px;"></div>
+    <div id="achubaba" class="container border border-secondary-subtle row"
+        style="  display: flex; width: 980px; height: 722px; margin: auto; border-radius: 20px;"><br>
+        <div id="achubaba" style="width: 890px; height: 671.19px; margin: auto;">
+            <section style="left: 100%; width: 500px; height: 671.1px;">
+                <div style="width: 500px; height: 500px;">
+                    <img src="data:image/jpeg;base64,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" alt="cafe"
+                        style="width: 500px; height: 500px; border-radius: 10px; box-shadow: 2px 2px 5px rgb(163, 163, 163)">
+                </div>
+                <div style="width: 500px; height: 150px;"><br>
+                    <h5>
+                        Descrição do produto. ex.: quantas gramas, quantas unidades, especificações especiais,etc.
+                    </h5>
+                </div>
+            </section>
+            <div style="width: 35px; height: 671.19px;"></div>
+            <section class="secaoProdutos" style="width: 355px; height: 671.19px;">
+                <div style="width: 355px; height: 243.19px;">
+                    <div style="margin: auto; height: 50px;">
+                        <h4>Caramel Latte Starbucks</h4>
+                    </div>
+                    <div style="height: 40px;">
+                        <h5>R$: 23,49</h5>
+                    </div>
+                    <div style=" height: 40px;">
+                        <div>
+                            <p>Quantidade</p>
+                            <input type="number" max="100" min="1"
+                                style="width: 80px; height: 40px; background-color: #f7f3f2; text-align: center; border-radius: 2px; border-color: #27211E;">
+                        </div>
+                        <div style="height: 20px;"></div>
+                        <div>
+                            <a href="../Pagina/telaCarrinho.html">
+                                  <button class="btn fifth">
+                                    <h5>Adicionar ao Carrinho</h5>
+                            </button>
+                            </a>
+                          
+                        </div>
+                    </div>
+
+                </div>
+
+                <div style="width: 355px; height: 40px;">
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                    aria-controls="flush-collapseOne" style="height: 70px; background-color: #f7f3f2;">
+                                    <h5>Detalhes do Produto</h5>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body" style="background-color: #f7f3f2;">
+                                    Placeholder content for this accordion, which is intended to demonstrate the
+                                    <code>.accordion-flush</code> class. This is the first item's accordion body.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                    aria-controls="flush-collapseTwo" style="height: 70px; background-color: #f7f3f2;">
+                                    <h5>Informações de Envio</h5>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body" style="background-color: #f7f3f2;">
+                                    Placeholder content for this accordion, which is intended to demonstrate the
+                                    <code>.accordion-flush</code> class. This is the second item's accordion body. Let's
+                                    imagine this being filled with some actual content.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                    aria-controls="flush-collapseThree"
+                                    style="height: 70px; background-color: #f7f3f2;">
+                                    <h5>Politica de Devolução e Reembolso</h5>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body" style="background-color: #f7f3f2;">
+                                    Placeholder content for this accordion, which is intended to demonstrate the
+                                    <code>.accordion-flush</code> class. This is the third item's accordion body.
+                                    Nothing more exciting happening here in terms of content, but just filling up the
+                                    space to make it look, at least at first glance, a bit more representative of how
+                                    this would look in a real-world application.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div><br>
+
+    <footer class="bg-dark text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="bi bi-facebook"></i></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="bi bi-instagram"></i></a>
+
+                <!-- WPP -->
+
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="bi bi-whatsapp"></i>
+                </a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="bi bi-linkedin"></i>
+                </a>
+
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2023 Copyright:
+            <a class="text-white" href="https://mdbootstrap.com/">Livaty.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+    <!--Script-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

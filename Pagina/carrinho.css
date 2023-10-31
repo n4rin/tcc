@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=REM:wght@300&display=swap');
+
+* {
+    font-family: "REM", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+.container {
+    width: 95%;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.header1 {
+    display: grid;
+    grid-template-columns: 1fr 50px;
+    margin-top: 50px;
+}
+
+.header1 .shopping {
+    position: relative;
+    text-align: right;
+}
+
+.header1 .shopping img {
+    width: 50px;
+    cursor: pointer;
+}
+
+.header1 .shopping span {
+    background-color: rgb(0, 100, 5);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: absolute;
+    top: -5px;
+    left: 80%;
+    padding: 3px 10px;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+    row-gap: 20px;
+    margin-top: 50px;
+}
+
+.card {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    width: 500px;
+    background: rgba(0, 0, 0, .2);
+    backdrop-filter: blur(15px);
+    height: 100%;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+.active .card{
+    left: calc(100% - 500px);
+}
+
+.card h1 {
+    color: grey;
+    margin: 0;
+    padding: 0 20px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.card .checkout {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.card .checkout div {
+    background: rgb(35, 44, 35);
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+}
+
+.card .checkout div:nth-child(2) {
+    background: rgb(108, 136, 108);
+    color: black;
+
+}
+
+.icon-close{
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    padding-right: 15px;
+  }
+
+  .list .item{
+    text-align: center;
+    background: rgba(0, 0, 0, .1);
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    border-color: grey;
+    color: white;
+  }
+
+  .list .item img{
+    width: 150px;
+    height: 150px;
+  }
+
+  .list .item .titulo{
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .list .item .precos{
+    margin: 8px;
+  }
+
+  .list .btn-produtc{
+    width: 100%;
+    height: 30px;
+    background: transparent;
+    border: 2px solid white;
+    margin: 10px 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    border-radius: 25px;
+    color: white;
+    transition: .5s;
+    cursor: pointer;
+  }
+
+  .list .btn-produtc:hover{
+    opacity: 4px;
+  }
+  
+  .container h2{
+    color: rgb(209, 209, 209);
+    padding-top: 40px;
+    font-size: 35px;
+    font-weight: 700;
+    padding-left: 25px;
+  }
+
+    .container hr{
+        border-color: rgb(124, 124, 124);
+        width: 300px;
+    }

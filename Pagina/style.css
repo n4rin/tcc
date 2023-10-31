@@ -1,0 +1,535 @@
+  @import url('https://fonts.googleapis.com/css2?family=REM:wght@300&display=swap');
+
+  * {
+    font-family: "REM", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    min-height: 100vh;
+    background: rgb(0, 0, 0);
+    background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 62, 28, 1) 0%, rgba(0, 0, 0, 1) 100%);
+  }
+
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.3rem 10%;
+    background: rgba(0, 0, 0, .2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+  }
+
+  .header img{
+    width: 150px;
+    padding-top: 13px;
+  }
+
+  .logo {
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .navbar a {
+    position: relative;
+    font-size: 1.15rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 2.5rem;
+  }
+
+  .navbar a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: white;
+    border-radius: 5px;
+    transform: translateY(10px);
+    transition: .5s;
+    opacity: 0;
+  }
+
+  .navbar a:hover::after {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .navbar2 a {
+    font-size: 2.3rem;
+    color: white;
+    text-decoration: none;
+    margin-left: 2.5rem;
+  }
+
+  .wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 450px;
+    height: 100%;
+    background: transparent;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: -1px 0 10px rgb(0, 0, 0, .2);
+    border-left: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 15px;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .wrapper.active-user{
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .icon-close{
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    padding-right: 15px;
+  }
+
+  .icon-close i{
+    font-size: 45px;
+    color: white;
+  }
+
+  .wrapper .form-box.login{
+    display: block;
+  }
+
+  .wrapper.active .form-box.login{
+    display: none;
+  }
+
+  .wrapper .form-box.registro{
+    display: none;
+  }
+
+  .wrapper.active .form-box.registro{
+    display: block;
+  }
+
+  .wrapper .logreg-box {
+    width: 100%;
+  }
+
+  .logreg-box .logreg-titulo {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color: white;
+  }
+
+  .logreg-titulo h2 {
+    font-size: 37px;
+  }
+
+  .logreg-titulo p {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .logreg-box .input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+    border-bottom: 2px solid white;
+  }
+
+  .input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: white;
+    font-weight: 500;
+    padding-right: 30px;
+  }
+
+  .input-box label {
+    position: absolute;
+    left: 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: .5s;
+  }
+
+  .input-box input:focus~label,
+  .input-box input:valid~label {
+    top: -5px;
+  }
+
+  .input-box .icon {
+    position: absolute;
+    font-size: 24px;
+    color: white;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .logreg-box .lembrar-senha {
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .lembrar-senha label input {
+    accent-color: white;
+    margin-right: 10px;
+    color:  rgb(158, 158, 158);
+  }
+
+  .lembrar-senha a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .lembrar-senha a:hover {
+    text-decoration: underline;
+  }
+
+  .logreg-box .btn{
+    width: 100%;
+    height: 45px;
+    background: white;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 2px 5px rgb(0, 0, 0, .2);
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    color: #222;
+  }
+
+  .logreg-box .logreg-link{
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+    margin: 25px 0 15px;
+  }
+
+  .logreg-link p a{
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .logreg-link p a:hover{
+    text-decoration: underline;
+  }
+
+  .opcao-midia{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .opcao-midia a{
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: 2px solid white;
+    margin: 10px 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    border-radius: 40px;
+    color: white;
+    text-decoration: none;
+    transition: .5s;
+  }
+
+  .opcao-midia a i {
+    font-size: 25px;
+    margin: 0 8px 1.5px 0;
+  }
+
+  .opcao-midia a span{
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .opcao-midia a:hover{
+    background: rgba(255, 255, 255, .1);
+  }
+
+  .banner-color{
+    width: 100%;
+    height: 600px;
+  }
+
+  .banner-img{
+    background-image: url('https://citizenside.com/wp-content/uploads/2020/11/14-morning-scaled.jpg');
+    border-radius: 15px;
+    width: 75%;
+    height: 600px;
+    background-size: cover;
+    background-position: center;
+    top: 0;
+    margin: auto;
+    margin-top: 100px;
+  }
+  
+  .banner-img-cafes{
+    background-image: url('https://wallpapercave.com/wp/wp6835715.jpg');
+    border-radius: 15px;
+    width: 75%;
+    height: 600px;
+    background-size: cover;
+    background-position: center;
+    top: 0;
+    margin: auto;
+    margin-top: 100px;
+  }
+
+  .banner-img-chas{
+    background-image: url('https://afterellen.com/wp-content/uploads/2021/03/iStock-1209220375.jpg');
+    border-radius: 15px;
+    width: 75%;
+    height: 600px;
+    background-size: cover;
+    background-position: center;
+    top: 0;
+    margin: auto;
+    margin-top: 100px;
+  }
+
+  .banner-img-incensos{
+    background-image: url('https://img.huffingtonpost.com/asset/5f058e992200006e06386a1b.jpeg?cache=rUDHAT8Ov6&ops=1200_630');
+    border-radius: 15px;
+    width: 75%;
+    height: 600px;
+    background-size: cover;
+    background-position: center;
+    top: 0;
+    margin: auto;
+    margin-top: 100px;
+  }
+
+  .banner-text{
+    padding: 100px;
+    padding-top: 250px;
+  }
+
+  .banner-text h2{
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+  }
+
+  .banner-text p{
+    font-size: 28px;
+    font-weight: 500;
+    color: white;
+  }
+
+  .navbar2 span{
+    background-color: rgb(13, 73, 13);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: absolute;
+    top: 12px;
+    left: 83%;
+    padding: 3px 10px;
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+footer{
+  width: 100%;
+  color: white;
+}
+
+#footer-content{
+  background-color: rgba(0, 0, 0, 0.472);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 3rem 3.5rem;
+}
+
+#footer-contacts h2{
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+#footer-contacts p{
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+#footer-social-media{
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+#footer-social-media .footer-link{
+  height: 2.5rem;
+  width: 2.5rem;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.4s;
+}
+
+#footer-social-media .footer-link i{
+  font-size: 1.25rem;
+}
+
+#footer-social-media .footer-link:hover{
+  opacity: 0.8;
+}
+
+#instagram{
+  background: linear-gradient(#7f37c9, #ff2992, #ff9807);
+}
+
+#facebook{
+  background-color: #4267b3;
+}
+
+#whatsapp{
+  background-color: #25d366;
+}
+
+.footer-list{
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  list-style: none;
+  font-weight: 500;
+}
+
+.footer-list .footer-link{
+  color: rgb(95, 95, 95);
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+  transition: all 0.4s;
+}
+
+.footer-list .footer-link:hover{
+  color: rgb(178, 178, 178);
+}
+
+#footer-copyright{
+  display: flex;
+  justify-content: center;
+  background-color: rgb(0, 0, 0);
+  font-size: 0.9rem;
+  padding: 1.5rem;
+  font-weight: 100;
+}
+
+.blocos{
+  width: 100%;
+  padding: 20px 0;
+  padding-top: 40px;
+}
+
+.blocos a{
+  text-decoration: none;
+}
+
+.blocos h3{
+  color: rgb(255, 255, 255);
+  font-size: 100px;
+  font-weight: 500;
+  text-align: center;
+  align-items: center;
+  padding-top: 100px;
+}
+
+.blocos2 h3{
+  color: rgb(255, 255, 255);
+  font-size: 90px;
+  font-weight: 500;
+  text-align: center;
+  align-items: center;
+  padding-top: 70px;
+}
+
+.blocos2{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.bloco-a{
+  background: url('https://cdn.tudosobrecafe.com/articles/137/images/16373371451427469635.png');
+  width: 75%;
+  height: 300px;
+  flex-direction: column;
+  background-size: cover;
+  background-position: center;
+  top: 0;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.bloco-b{
+  background: url('https://www.dicasdemulher.com.br/wp-content/uploads/2018/01/chas-para-dormir-01.png');
+  width: 35%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+.bloco-c{
+  background: url('https://uvn-brightspot.s3.amazonaws.com/assets/vixpt/i/ingredientes-bolo-ovo-chocolate-1016-1400x800.jpg');
+  width: 40%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
