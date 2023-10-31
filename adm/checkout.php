@@ -1,6 +1,6 @@
 <?php
 
-@include 'config.php';
+@include 'conexaoBD.php';
 
 if(isset($_POST['order_btn'])){
 
@@ -15,10 +15,12 @@ if(isset($_POST['order_btn'])){
    $country = $_POST['country'];
    $pin_code = $_POST['pin_code'];
 
-   $cart_query = mysqli_query($conn, "SELECT * FROM `cart`");
+   $stmt = $pdo->prepare("SELECT * FROM `cart`");
+   $stmt->execute();
+   
    $price_total = 0;
-   if(mysqli_num_rows($cart_query) > 0){
-      while($product_item = mysqli_fetch_assoc($cart_query)){
+   if($stmt->rowCount() > 0){
+      while($product_item = $stmt->fetch()){
          $product_name[] = $product_item['name'] .' ('. $product_item['quantity'] .') ';
          $product_price = number_format($product_item['price'] * $product_item['quantity']);
          $price_total += $product_price;
@@ -26,16 +28,19 @@ if(isset($_POST['order_btn'])){
    };
 
    $total_product = implode(', ',$product_name);
-   $detail_query = mysqli_query($conn, "INSERT INTO `order`(name, number, email, method, flat, street, city, state, country, pin_code, total_products, total_price) VALUES('$name','$number','$email','$method','$flat','$street','$city','$state','$country','$pin_code','$total_product','$price_total')") or die('query failed');
+   
+   $stmt2 = $pdo->prepare("INSERT INTO `order`(name, number, email, method, flat, street, city, state, country, pin_code, total_products, total_price) VALUES(:name,:number,:email,:method,:flat,:street,:city,:state,:country,:pin_code,:total_product,:price_total)");
+   
+   $stmt2->execute([':name' => $name, ':number' => $number, ':email' => $email, ':method' => $method, ':flat' => $flat, ':street' => $street, ':city' => $city, ':state' => $state, ':country' => $country, ':pin_code' => $pin_code, ':total_product' => $total_product, ':price_total' => $price_total]);
 
-   if($cart_query && $detail_query){
+   if($stmt && $stmt2){
       echo "
       <div class='order-message-container'>
       <div class='message-container'>
          <h3>thank you for shopping!</h3>
          <div class='order-detail'>
             <span>".$total_product."</span>
-            <span class='total'> total : $".$price_total."/-  </span>
+            <span class='total'> total : R$".$price_total."/-  </span>
          </div>
          <div class='customer-details'>
             <p> your name : <span>".$name."</span> </p>
@@ -54,6 +59,7 @@ if(isset($_POST['order_btn'])){
 }
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

@@ -1,28 +1,38 @@
 <?php
 
-@include 'config.php';
+@include 'conexaoBD.php';
 
 if(isset($_POST['update_update_btn'])){
    $update_value = $_POST['update_quantity'];
    $update_id = $_POST['update_quantity_id'];
-   $update_quantity_query = mysqli_query($conn, "UPDATE `cart` SET quantity = '$update_value' WHERE id = '$update_id'");
-   if($update_quantity_query){
+
+   $stmt = $pdo->prepare("UPDATE `cart` SET quantity = :quantity WHERE id = :id");
+   $stmt->execute([':quantity' => $update_value, ':id' => $update_id]);
+
+   if($stmt){
       header('location:cart.php');
    };
 };
 
 if(isset($_GET['remove'])){
    $remove_id = $_GET['remove'];
-   mysqli_query($conn, "DELETE FROM `cart` WHERE id = '$remove_id'");
+
+   $stmt = $pdo->prepare("DELETE FROM `cart` WHERE id = :id");
+   $stmt->execute([':id' => $remove_id]);
+
    header('location:cart.php');
 };
 
 if(isset($_GET['delete_all'])){
-   mysqli_query($conn, "DELETE FROM `cart`");
+   
+   $stmt = $pdo->prepare("DELETE FROM `cart`");
+   $stmt->execute();
+
    header('location:cart.php');
 }
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,10 +74,11 @@ if(isset($_GET['delete_all'])){
 
          <?php 
          
-         $select_cart = mysqli_query($conn, "SELECT * FROM `cart`");
+         $stmt = $pdo->prepare("SELECT * FROM `cart`");
+         $stmt->execute();
          $grand_total = 0;
-         if(mysqli_num_rows($select_cart) > 0){
-            while($fetch_cart = mysqli_fetch_assoc($select_cart)){
+         if($stmt->rowCount() > 0){
+            while($fetch_cart = $stmt->fetch()){
          ?>
 
          <tr>
@@ -113,3 +124,4 @@ if(isset($_GET['delete_all'])){
 
 </body>
 </html>
+

@@ -2,21 +2,16 @@
 
    <div class="flex">
 
-      <a href="#" class="logo">foodies</a>
+      <a href="#" class="logo">Administração</a>
 
       <nav class="navbar">
-         <a href="admin.php">add products</a>
-         <a href="products.php">view products</a>
+         <a href="admin.php">add produtos</a>
+         <a href="products.php">ver produtos</a>
       </nav>
 
-      <?php
-      
-      $select_rows = mysqli_query($conn, "SELECT * FROM `cart`") or die('query failed');
-      $row_count = mysqli_num_rows($select_rows);
 
-      ?>
 
-      <a href="cart.php" class="cart">cart <span><?php echo $row_count; ?></span> </a>
+      <a href="cart.php" class="cart">carrinho <span></span> </a>
 
       <div id="menu-btn" class="fas fa-bars"></div>
 

@@ -1,18 +1,19 @@
 <?php
 
-@include 'config.php';
+@include 'conexaoBD.php';
 
 if(isset($_POST['add_product'])){
-   $p_name = $_POST['p_name'];
-   $p_price = $_POST['p_price'];
-   $p_image = $_FILES['p_image']['name'];
-   $p_image_tmp_name = $_FILES['p_image']['tmp_name'];
+   $p_nome = $_POST['p_nome'];
+   $p_precoVenda = $_POST['p_precoVenda'];
+   $p_image = $_FILES['p_image']['nome'];
+   $p_image_tmp_nome = $_FILES['p_image']['tmp_nome'];
    $p_image_folder = 'uploaded_img/'.$p_image;
 
-   $insert_query = mysqli_query($conn, "INSERT INTO `products`(name, price, image) VALUES('$p_name', '$p_price', '$p_image')") or die('query failed');
+   $stmt = $pdo->prepare("INSERT INTO `products`(nome, precoVenda, image) VALUES(:nome, :precoVenda, :image)");
+   $stmt->execute([':nome' => $p_nome, ':precoVenda' => $p_precoVenda, ':image' => $p_image]);
 
-   if($insert_query){
-      move_uploaded_file($p_image_tmp_name, $p_image_folder);
+   if($stmt){
+      move_uploaded_file($p_image_tmp_nome, $p_image_folder);
       $message[] = 'product add succesfully';
    }else{
       $message[] = 'could not add the product';
@@ -21,8 +22,11 @@ if(isset($_POST['add_product'])){
 
 if(isset($_GET['delete'])){
    $delete_id = $_GET['delete'];
-   $delete_query = mysqli_query($conn, "DELETE FROM `products` WHERE id = $delete_id ") or die('query failed');
-   if($delete_query){
+   
+   $stmt = $pdo->prepare("DELETE FROM `products` WHERE id = :id");
+   $stmt->execute([':id' => $delete_id]);
+
+   if($stmt){
       header('location:admin.php');
       $message[] = 'product has been deleted';
    }else{
@@ -33,33 +37,37 @@ if(isset($_GET['delete'])){
 
 if(isset($_POST['update_product'])){
    $update_p_id = $_POST['update_p_id'];
-   $update_p_name = $_POST['update_p_name'];
-   $update_p_price = $_POST['update_p_price'];
-   $update_p_image = $_FILES['update_p_image']['name'];
-   $update_p_image_tmp_name = $_FILES['update_p_image']['tmp_name'];
+   $update_p_nome = $_POST['update_p_nome'];
+   $update_p_precoVenda = $_POST['update_p_precoVenda'];
+   $update_p_image = $_FILES['update_p_image']['nome'];
+   $update_p_image_tmp_nome = $_FILES['update_p_image']['tmp_nome'];
    $update_p_image_folder = 'uploaded_img/'.$update_p_image;
 
-   $update_query = mysqli_query($conn, "UPDATE `products` SET name = '$update_p_name', price = '$update_p_price', image = '$update_p_image' WHERE id = '$update_p_id'");
+   $stmt = $pdo->prepare("UPDATE `products` SET nome = :nome, precoVenda = :precoVenda, image = :image WHERE id = :id");
+   $stmt->execute([':nome' => $update_p_nome, ':precoVenda' => $update_p_precoVenda, ':image' => $update_p_image, ':id' =>  $update_p_id]);
 
-   if($update_query){
-      move_uploaded_file($update_p_image_tmp_name, $update_p_image_folder);
+   if($stmt){
+      move_uploaded_file($update_p_image_tmp_nome, $update_p_image_folder);
+      header('location:admin.php');
       $message[] = 'product updated succesfully';
-      header('location:admin.php');
+      
    }else{
-      $message[] = 'product could not be updated';
       header('location:admin.php');
+      $message[] = 'product could not be updated';
+      
    }
 
 }
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta nome="viewport" content="width=device-width, initial-scale=1.0">
    <title>Administração</title>
 
    <!-- font awesome cdn link  -->
@@ -89,10 +97,10 @@ if(isset($message)){
 
 <form action="" method="post" class="add-product-form" enctype="multipart/form-data">
    <h3>add novo produto</h3>
-   <input type="text" name="p_name" placeholder="enter the product name" class="box" required>
-   <input type="number" name="p_price" min="0" placeholder="enter the product price" class="box" required>
-   <input type="file" name="p_image" accept="image/png, image/jpg, image/jpeg" class="box" required>
-   <input type="submit" value="add the product" name="add_product" class="btn">
+   <input type="text" nome="p_nome" placeholder="enter the product nome" class="box" required>
+   <input type="number" nome="p_precoVenda" min="0" placeholder="enter the product precoVenda" class="box" required>
+   <input type="file" nome="p_image" accept="image/png, image/jpg, image/jpeg" class="box" required>
+   <input type="submit" value="add the product" nome="add_product" class="btn">
 </form>
 
 </section>
@@ -103,8 +111,8 @@ if(isset($message)){
 
       <thead>
          <th>product image</th>
-         <th>product name</th>
-         <th>product price</th>
+         <th>product nome</th>
+         <th>product precoVenda</th>
          <th>action</th>
       </thead>
 
@@ -118,8 +126,8 @@ if(isset($message)){
 
          <tr>
             <td><img src="uploaded_img/<?php echo $row['image']; ?>" height="100" alt=""></td>
-            <td><?php echo $row['name']; ?></td>
-            <td>$<?php echo $row['price']; ?>/-</td>
+            <td><?php echo $row['nome']; ?></td>
+            <td>$<?php echo $row['precoVenda']; ?>/-</td>
             <td>
                <a href="admin.php?delete=<?php echo $row['id']; ?>" class="delete-btn" onclick="return confirm('are your sure you want to delete this?');"> <i class="fas fa-trash"></i> delete </a>
                <a href="admin.php?edit=<?php echo $row['id']; ?>" class="option-btn"> <i class="fas fa-edit"></i> update </a>
@@ -150,11 +158,11 @@ if(isset($message)){
 
    <form action="" method="post" enctype="multipart/form-data">
       <img src="uploaded_img/<?php echo $fetch_edit['image']; ?>" height="200" alt="">
-      <input type="hidden" name="update_p_id" value="<?php echo $fetch_edit['id']; ?>">
-      <input type="text" class="box" required name="update_p_name" value="<?php echo $fetch_edit['name']; ?>">
-      <input type="number" min="0" class="box" required name="update_p_price" value="<?php echo $fetch_edit['price']; ?>">
-      <input type="file" class="box" required name="update_p_image" accept="image/png, image/jpg, image/jpeg">
-      <input type="submit" value="update the prodcut" name="update_product" class="btn">
+      <input type="hidden" nome="update_p_id" value="<?php echo $fetch_edit['id']; ?>">
+      <input type="text" class="box" required nome="update_p_nome" value="<?php echo $fetch_edit['nome']; ?>">
+      <input type="number" min="0" class="box" required nome="update_p_precoVenda" value="<?php echo $fetch_edit['precoVenda']; ?>">
+      <input type="file" class="box" required nome="update_p_image" accept="image/png, image/jpg, image/jpeg">
+      <input type="submit" value="update the prodcut" nome="update_product" class="btn">
       <input type="reset" value="cancel" id="close-edit" class="option-btn">
    </form>
 

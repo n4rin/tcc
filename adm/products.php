@@ -1,6 +1,6 @@
 <?php
 
-@include 'config.php';
+@include 'conexaoBD.php';
 
 if(isset($_POST['add_to_cart'])){
 
