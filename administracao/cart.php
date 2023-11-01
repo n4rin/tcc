@@ -36,7 +36,7 @@ if (isset($_GET['delete_all'])) {
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Administração</title>
+   <title>Carrinho</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -46,8 +46,6 @@ if (isset($_GET['delete_all'])) {
 
 </head>
 <body>
-
-<?php include 'header.php'; ?>
 
 <div class="container">
 
@@ -88,7 +86,7 @@ if (isset($_GET['delete_all'])) {
                </form>   
             </td>
             <td>$<?php echo $sub_total = number_format($fetch_cart['price'] * $fetch_cart['quantity']); ?>/-</td>
-            <td><a href="cart.php?remove=<?php echo $fetch_cart['id']; ?>" onclick="return confirm('remove item from cart?')" class="delete-btn"> <i class="fas fa-trash"></i> remove</a></td>
+            <td><a href="cart.php?remove=<?php echo $fetch_cart['id']; ?>" onclick="return confirm('deseja remover o item do carrinho?')" class="delete-btn"> <i class="fas fa-trash"></i> remove</a></td>
          </tr>
          <?php
            $grand_total += $sub_total;  
@@ -96,10 +94,10 @@ if (isset($_GET['delete_all'])) {
          }
          ?>
          <tr class="table-bottom">
-            <td><a href="products.php" class="option-btn" style="margin-top: 0;">continue comprando</a></td>
-            <td colspan="3">grand total</td>
+            <td><a href="../Pagina/index.php" class="option-btn" style="margin-top: 0;">continue comprando</a></td>
+            <td colspan="3">compra total</td>
             <td>$<?php echo $grand_total; ?>/-</td>
-            <td><a href="cart.php?delete_all" onclick="return confirm('are you sure you want to delete all?');" class="delete-btn"> <i class="fas fa-trash"></i> deletar produto </a></td>
+            <td><a href="cart.php?delete_all" onclick="return confirm('tem certeza que deseja deletar todos os produtos?');" class="delete-btn"> <i class="fas fa-trash"></i>deletar tudo</a></td>
          </tr>
 
       </tbody>

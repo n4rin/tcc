@@ -48,20 +48,19 @@ if (isset($_POST['order_btn'])) {
       echo "
       <div class='order-message-container'>
       <div class='message-container'>
-         <h3>thank you for shopping!</h3>
+         <h3>obrigado pela compra!</h3>
          <div class='order-detail'>
             <span>" . $total_product . "</span>
-            <span class='total'> total : $" . $price_total . "/-  </span>
+            <span class='total'> total : R$" . $price_total . " </span>
          </div>
          <div class='customer-details'>
-            <p> your name : <span>" . $name . "</span> </p>
-            <p> your number : <span>" . $number . "</span> </p>
-            <p> your email : <span>" . $email . "</span> </p>
-            <p> your address : <span>" . $flat . ", " . $street . ", " . $city . ", " . $state . ", " . $country . " - " . $pin_code . "</span> </p>
-            <p> your payment mode : <span>" . $method . "</span> </p>
-            <p>(*pay when product arrives*)</p>
+            <p> seu nome : <span>" . $name . "</span> </p>
+            <p> seu número : <span>" . $number . "</span> </p>
+            <p> seu e-mail : <span>" . $email . "</span> </p>
+            <p> seu endereço : <span>" . $flat . ", " . $street . ", " . $city . ", " . $state . ", " . $country . " - " . $pin_code . "</span> </p>
+            <p> seu método de pagamento : <span>" . $method . "</span> </p>
          </div>
-            <a href='products.php' class='btn'>continue shopping</a>
+            <a href='../Pagina/index.php' class='btn'>continue comprando</a>
          </div>
       </div>
       ";
@@ -76,7 +75,7 @@ if (isset($_POST['order_btn'])) {
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>checkout</title>
+   <title>finalizar compra</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -93,7 +92,7 @@ if (isset($_POST['order_btn'])) {
 
 <section class="checkout-form">
 
-   <h1 class="heading">complete your order</h1>
+   <h1 class="heading">Complete com suas informações</h1>
 
    <form action="" method="post">
 
@@ -111,59 +110,59 @@ if (isset($_POST['order_btn'])) {
       <?php
          }
       } else {
-         echo "<div class='display-order'><span>your cart is empty!</span></div>";
+         echo "<div class='display-order'><span>Itens da compra!</span></div>";
       }
       ?>
-      <span class="grand-total"> grand total : $<?= $grand_total; ?>/- </span>
+      <span class="grand-total"> Total : R$<?= $grand_total; ?></span>
    </div>
 
       <div class="flex">
          <div class="inputBox">
-            <span>your name</span>
-            <input type="text" placeholder="enter your name" name="name" required>
+            <span>Nome</span>
+            <input type="text" placeholder="digite seu nome" name="name" required>
          </div>
          <div class="inputBox">
-            <span>your number</span>
-            <input type="number" placeholder="enter your number" name="number" required>
+            <span>Número Telefonico</span>
+            <input type="number" placeholder="digite seu numero telefonico" name="number" required>
          </div>
          <div class="inputBox">
-            <span>your email</span>
-            <input type="email" placeholder="enter your email" name="email" required>
+            <span>E-mail</span>
+            <input type="email" placeholder="digite seu e-mail" name="email" required>
          </div>
          <div class="inputBox">
-            <span>payment method</span>
+            <span>Método de Pagamento</span>
             <select name="method">
-               <option value="cash on delivery" selected>cash on devlivery</option>
-               <option value="credit cart">credit cart</option>
-               <option value="paypal">paypal</option>
+               <option value="boleto" selected>boleto</option>
+               <option value="cartao de credito">cartão de crédito</option>
+               <option value="pix">pix</option>
             </select>
          </div>
          <div class="inputBox">
-            <span>address line 1</span>
-            <input type="text" placeholder="e.g. flat no." name="flat" required>
+            <span>Endereço</span>
+            <input type="text" placeholder="rua, bairro.." name="flat" required>
          </div>
          <div class="inputBox">
-            <span>address line 2</span>
-            <input type="text" placeholder="e.g. street name" name="street" required>
+            <span>Complemento</span>
+            <input type="text" placeholder="prédio, apto.." name="street" required>
          </div>
          <div class="inputBox">
-            <span>city</span>
-            <input type="text" placeholder="e.g. mumbai" name="city" required>
+            <span>Cidade</span>
+            <input type="text" placeholder="ex. campinas.. " name="city" required>
          </div>
          <div class="inputBox">
-            <span>state</span>
-            <input type="text" placeholder="e.g. maharashtra" name="state" required>
+            <span>Estado</span>
+            <input type="text" placeholder="ex. sp, mg, rj.." name="state" required>
          </div>
          <div class="inputBox">
-            <span>country</span>
-            <input type="text" placeholder="e.g. india" name="country" required>
+            <span>País</span>
+            <input type="text" placeholder="ex. brasil.." name="country" required>
          </div>
          <div class="inputBox">
-            <span>pin code</span>
-            <input type="text" placeholder="e.g. 123456" name="pin_code" required>
+            <span>Número da residencia</span>
+            <input type="text" placeholder="ex. 123456" name="pin_code" required>
          </div>
       </div>
-      <input type="submit" value="order now" name="order_btn" class="btn">
+      <input type="submit" value="Finalizar" name="order_btn" class="btn">
    </form>
 
 </section>
