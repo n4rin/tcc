@@ -25,6 +25,25 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
         echo "Nome de usuário ou senha incorretos";
     }
 }
+
+function searchProductsByTag($tag)
+{
+    include("conexaoBD.php");
+
+    // Consulta SQL
+    $sql = "SELECT Codigo, Nome, precoVenda 
+            FROM produto
+            WHERE tag LIKE :tag";
+
+    // Preparar a consulta
+    $stmt = $pdo->prepare($sql);
+
+    // Executar a consulta
+    $stmt->execute(['tag' => '%' . $tag . '%']);
+
+    // Retornar os resultadost
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,8 +57,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="carrinho.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="icon" type="image/x-icon" href="../imagem/logo.PNG">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -56,11 +74,13 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
 
         </nav>
         <nav class="navbar2">
-                    <a href="#"><i class='bx bx-search'></i></a>
-                    <a href="#" class="shopping"><i class='bx bx-cart shopping'></i><span class="quantity">0</span></a>
-                    <a href="<?php echo isset($_SESSION['email']) ? 'perfil.php' : '#'; ?>" class="btn-user"><i
-                            class='bx bxs-user-circle'></i></a>
-            
+        <form method="post" action="search.php">
+                <input type="text" name="query" placeholder="Pesquisar">
+                <input type="submit" value="Pesquisar">
+                <a href="# class=" shopping"><i class='bx bx-cart shopping'></i><span class="quantity">0</span></a>
+                <a href="<?php echo isset($_SESSION['email']) ? 'perfil.php' : '#'; ?>" class="btn-user"><i class='bx bxs-user-circle'></i></a>
+                </form>
+
             <?php
             if (isset($_SESSION['email'])) {
                 // O usuário está logado, exibir o ícone/botão de logout
@@ -73,7 +93,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
             <!--<a href="logout.php" class="logout-link" style="font-size: 1.9rem;"><i class='bx bx-log-out-circle'> Sair</i></a>-->
 
             <script>
-                document.querySelector('.logout-link').addEventListener('click', function (event) {
+                document.querySelector('.logout-link').addEventListener('click', function(event) {
                     event.preventDefault();
                     Swal.fire({
                         title: 'Tem certeza?',
@@ -122,8 +142,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
                         </div>
                         <button type="submit" class="btn">Logar</button>
                         <div class="logreg-link">
-                            <p>Ainda não tem uma conta? <a href="../Login/cadastro.php"
-                                    class="registro-link">Cadastre-se aqui.</a></p>
+                            <p>Ainda não tem uma conta? <a href="../Login/cadastro.php" class="registro-link">Cadastre-se aqui.</a></p>
                         </div>
                     </form>
                 </div>
@@ -167,10 +186,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
                     <i class='bx bxl-google'></i>
                     <span>Continue with Google</span>
                 </a>
-                <a href="#">
-                    <i class='bx bxl-facebook-circle'></i>
-                    <span>Continue with Facebook</span>
-                </a>
+
             </div>
         </div>
     </section>
@@ -193,6 +209,50 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
             <div class="list"></div>
         </div>
     </section><br>
+    <section>
+        <?php
+        function searchProductsByName($nome)
+        {
+            //session_start();
+
+            // Inclua o arquivo de conexão com o banco de dados
+
+            $pdo = new PDO('mysql:host=143.106.241.3;dbname=cl201283', 'cl201283', '9rioi25sa4');
+            // Consulta SQL
+            $sql = "SELECT id, Nome, precoVenda, imagem
+            FROM produto
+            WHERE nome LIKE :nome";
+
+            // Preparar a consulta
+            $stmt = $pdo->prepare($sql);
+
+            // Executar a consulta
+            $stmt->execute(['nome' => '%' . $nome . '%']);
+
+            // Retornar os resultados
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        ?>
+
+    </section>
+
+    <div class="list">
+        <?php
+        $products = searchProductsByName('cafe');
+        foreach ($products as $product) {
+        ?>
+            <div class="item">
+                <img src=<?php echo $product['imagem']; ?> alt="Product Image">
+                <div class="titulo"><?php echo $product['Nome']; ?></div>
+                <div class="precos">R$ <?php echo number_format($product['precoVenda'], 2, ',', '.'); ?></div>
+                <button class="btn-produtc">Comprar</button>
+            </div>
+        <?php
+        }
+        ?>
+    </div>
+
+
 
     <!--Footer-->
     <footer>
@@ -228,16 +288,13 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
 
             <div id="footer-map">
                 <h3>Nossa sede:</h3>
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.4530145073554!2d-47.42621522712088!3d-22.562154025640524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8806c2c324933%3A0xe2108428886c8646!2sCol%C3%A9gio%20T%C3%A9cnico%20de%20Limeira%20-%20Unicamp!5e0!3m2!1spt-BR!2sbr!4v1696366241972!5m2!1spt-BR!2sbr"
-                    width="300" height="200" style="border-radius:15px;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.4530145073554!2d-47.42621522712088!3d-22.562154025640524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8806c2c324933%3A0xe2108428886c8646!2sCol%C3%A9gio%20T%C3%A9cnico%20de%20Limeira%20-%20Unicamp!5e0!3m2!1spt-BR!2sbr!4v1696366241972!5m2!1spt-BR!2sbr" width="300" height="200" style="border-radius:15px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
-            <div id="footer-copyright">
-                &#169
-                2023 all rights reserved
-            </div>
+        <div id="footer-copyright">
+            &#169
+            2023 all rights reserved
+        </div>
 
     </footer>
 
@@ -261,25 +318,25 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
 
 <script>
     // Adicione um evento de clique ao botão de login
-    document.getElementById('login-button').addEventListener('click', function () {
+    document.getElementById('login-button').addEventListener('click', function() {
         // Envie o formulário de login automaticamente
         document.getElementById('login-form').submit();
     });
 </script>
 
 <script>
-    document.querySelector('.btn-user').addEventListener('click', function () {
+    document.querySelector('.btn-user').addEventListener('click', function() {
         if (!document.querySelector('.section').classList.contains('active')) {
             document.querySelector('.section').classList.add('active');
         }
     });
-    document.querySelector('.icon-close').addEventListener('click', function () {
+    document.querySelector('.icon-close').addEventListener('click', function() {
         document.querySelector('.section').classList.remove('active');
     });
-    document.getElementById('login-form').addEventListener('submit', function (event) {
+    document.getElementById('login-form').addEventListener('submit', function(event) {
         event.preventDefault();
         var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
+        xhr.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 location.reload();
             }

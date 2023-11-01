@@ -15,48 +15,7 @@ closeShopping.addEventListener('click', () => {
 })
 
 let produtos = [
-    {
-        ID: 1,
-        nome: 'Chá Matte Leão',
-        imagem: '1.png',
-        preço: 12.90,
-        telaP: '../Produtos/telaProduto1.php',
-    },
-    {
-        ID: 2,
-        nome: 'Chá Verde Leão',
-        imagem: '2.png',
-        preço: 9.30,
-        telaP: '../Produtos/telaProduto2.php',
-    },
-    {
-        ID: 3,
-        nome: 'Chá de Capim Cidreira Leão',
-        imagem: '3.webp',
-        preço: 26.50,
-        telaP: '../Produtos/telaProduto3.php',
-    },
-    {
-        ID: 4,
-        nome: 'Chá de Hortelã',
-        imagem: '4.png',
-        preço: 22.00,
-        telaP: '../Produtos/telaProduto4.php',
-    },
-    {
-        ID: 5,
-        nome: 'Ice Tea Pessego',
-        imagem: '5.jpg',
-        preço: 9.99,
-        telaP: '../Produtos/telaProduto5.php',
-    },
-    {
-        ID: 6,
-        nome: 'Chá Preto Leão',
-        imagem: '6.jpg',
-        preço: 6.45,
-        telaP: '../Produtos/telaProduto6.php',
-    }
+   
 ];
 
 
