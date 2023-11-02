@@ -40,7 +40,7 @@ section{
    text-align: center;
    font-size: 3.5rem;
    text-transform: uppercase;
-   color:var(--black);
+   color: white;
    margin-bottom: 2rem;
 }
 
@@ -308,7 +308,7 @@ section{
    border-bottom: var(--border);
    padding:1.5rem;
    font-size: 2rem;
-   color:var(--black);
+   color:var(--white);
 }
 
 .shopping-cart table input[type="number"]{
@@ -332,7 +332,7 @@ section{
 }
 
 .shopping-cart table .table-bottom{
-   background-color: var(--bg-color);
+   background-color: transparent;
 }
 
 .shopping-cart .checkout-btn{

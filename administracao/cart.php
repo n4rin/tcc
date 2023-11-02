@@ -36,6 +36,7 @@ if (isset($_GET['delete_all'])) {
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" type="image/x-icon" href="../imagem/logo.PNG">
    <title>Carrinho</title>
 
    <!-- font awesome cdn link  -->
@@ -45,13 +46,13 @@ if (isset($_GET['delete_all'])) {
    <link rel="stylesheet" href="css/style.css">
 
 </head>
-<body>
-
+<body style="   background: rgb(0, 0, 0);
+    background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 62, 28, 1) 0%, rgba(0, 0, 0, 1) 100%);">
 <div class="container">
 
 <section class="shopping-cart">
 
-   <h1 class="heading">Carrinho</h1>
+   <h1 class="heading">Seu Carrinho</h1>
 
    <table>
 
@@ -95,7 +96,7 @@ if (isset($_GET['delete_all'])) {
          ?>
          <tr class="table-bottom">
             <td><a href="../Pagina/index.php" class="option-btn" style="margin-top: 0;">continue comprando</a></td>
-            <td colspan="3">compra total</td>
+            <td colspan="3">valor total</td>
             <td>$<?php echo $grand_total; ?>/-</td>
             <td><a href="cart.php?delete_all" onclick="return confirm('tem certeza que deseja deletar todos os produtos?');" class="delete-btn"> <i class="fas fa-trash"></i>deletar tudo</a></td>
          </tr>

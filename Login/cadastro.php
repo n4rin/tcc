@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../Imagens/iconG.png">
+    <link rel="icon" type="image/x-icon" href="../imagem/logo.PNG">
     <title>Cadastro</title>
     <link rel="stylesheet" href="../Pagina/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -243,14 +243,61 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
 </head>
 <body>
 <header class="header">
-        <a href="../Pagina/index.php" class="logo"><img src="../imagem/logo.PNG" alt=""></a>
+    <a href="../Pagina/index.php" class="logo"><img src="../imagem/logo.PNG" alt=""></a>
+    <nav class="navbar">
+        <a href="../Pagina/cafes.php">Cafés</a>
+        <a href="../Pagina/chas.php">Chás</a>
+        <a href="../Pagina/incensos.php">Incensos</a>
 
-        <nav class="navbar2">
-            <a href="<?php echo isset($_SESSION['email']) ? 'perfil.php' : '#'; ?>" class="btn-user"><i class='bx bxs-user-circle'></i></a>
-        </nav>
+    </nav>
+    <nav class="navbar2">
+        <form method="post" action="search.php">
+            <?php
+            @include '../administracao/config.php';
+      $select_rows = $conn->query("SELECT * FROM `cart`");
+      if ($select_rows) {
+         $row_count = $select_rows->rowCount();
+      } else {
+         die('query failed');
+      }
+      ?>
+            <a href="../administracao/cart.php" class=" shopping"><i class='bx bx-cart shopping'></i><span><?php echo $row_count; ?></span></a>
+            <a href="<?php echo isset($_SESSION['email']) ? 'perfil.php' : '#'; ?>" class="btn-user"><i
+                    class='bx bxs-user-circle'></i></a>
+        </form>
+        <?php
+            if (isset($_SESSION['email'])) {
+                // O usuário está logado, exibir o ícone/botão de logout
+                echo '<a href="logout.php" class="logout-link" style="font-size: 1.9rem;"><i class="bx bx-log-out-circle"> Sair</i></a>';
+            } else {
+            }
+            ?>
 
-</header>
-    
+        <!-- (boxicons) precisa terminar - realizar logout -->
+        <!--<a href="logout.php" class="logout-link" style="font-size: 1.9rem;"><i class='bx bx-log-out-circle'> Sair</i></a>-->
+
+        <script>
+            document.querySelector('.logout-link').addEventListener('click', function (event) {
+                event.preventDefault();
+                Swal.fire({
+                    title: 'Tem certeza?',
+                    text: "Você será desconectado do site!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sim, quero sair!',
+                    //background: '#1AD162'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = 'logout.php';
+                    }
+                })
+            });
+        </script>
+
+</header><br><br><br>
+
     <form id="campo" action="cadastro.php" class="box" method="post">
         <div class="cad-titulo">
           <h2>Cadastre-se</h2> 
@@ -266,7 +313,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
         <input type="submit" value="Cadastre-se">
         <span id="error-msg-cadastro" style="color: #eb0000; font-weight: 700; font-size: 18px;"></span>
         <span id="error" style="color: red;"></span>
-        <a href="login.php" class="login"> Já se cadastrou? Faça o login!</a>
+        <a href="../Pagina/index.php" class="login"> Já se cadastrou? Faça o login!</a>
        
 
     </form>

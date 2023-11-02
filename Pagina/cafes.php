@@ -65,54 +65,7 @@ function searchProductsByTag($tag)
 </head>
 
 <body>
-    <header class="header">
-        <a href="index.php" class="logo"><img src="../imagem/logo.PNG" alt=""></a>
-        <nav class="navbar">
-            <a href="cafes.php">Cafés</a>
-            <a href="chas.php">Chás</a>
-            <a href="incensos.php">Incensos</a>
-
-        </nav>
-        <nav class="navbar2">
-        <form method="post" action="search.php">
-                <input type="text" name="query" placeholder="Pesquisar">
-                <input type="submit" value="Pesquisar">
-                <a href="# class=" shopping"><i class='bx bx-cart shopping'></i><span class="quantity">0</span></a>
-                <a href="<?php echo isset($_SESSION['email']) ? 'perfil.php' : '#'; ?>" class="btn-user"><i class='bx bxs-user-circle'></i></a>
-                </form>
-
-            <?php
-            if (isset($_SESSION['email'])) {
-                // O usuário está logado, exibir o ícone/botão de logout
-                echo '<a href="logout.php" class="logout-link" style="font-size: 1.9rem;"><i class="bx bx-log-out-circle"> Sair</i></a>';
-            } else {
-            }
-            ?>
-
-            <!-- (boxicons) precisa terminar - realizar logout -->
-            <!--<a href="logout.php" class="logout-link" style="font-size: 1.9rem;"><i class='bx bx-log-out-circle'> Sair</i></a>-->
-
-            <script>
-                document.querySelector('.logout-link').addEventListener('click', function(event) {
-                    event.preventDefault();
-                    Swal.fire({
-                        title: 'Tem certeza?',
-                        text: "Você será desconectado do site!",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Sim, quero sair!',
-                        //background: '#1AD162'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.href = 'logout.php';
-                        }
-                    })
-                });
-            </script>
-
-    </header>
+<?php include 'navbar.php'; ?>
 
     <section class="section">
         <div class="wrapper">
