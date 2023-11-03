@@ -355,7 +355,8 @@ section{
 .checkout-form form{
    padding:2rem;
    border-radius: .5rem;
-   background-color: var(--bg-color);
+   background: rgba(84, 84, 84, 0.2);
+   backdrop-filter: blur(20px);
 }
 
 .checkout-form form .flex{
@@ -370,15 +371,26 @@ section{
 
 .checkout-form form .flex .inputBox span{
    font-size: 2rem;
-   color:var(--black);
+   color:var(--white);
 }
 
-.checkout-form form .flex .inputBox input,
+.checkout-form form .flex .inputBox input{
+   width: 100%;
+   background-color: transparent;
+   font-size: 1.7rem;
+   color:var(--white);
+   border-radius: .5rem;
+   margin:1rem 0;
+   padding:1.2rem 1.4rem;
+   text-transform: none;
+   border:var(--border);
+}
+
 .checkout-form form .flex .inputBox select{
    width: 100%;
-   background-color: var(--white);
+   background-color: transparent;
    font-size: 1.7rem;
-   color:var(--black);
+   color:var(--white);
    border-radius: .5rem;
    margin:1rem 0;
    padding:1.2rem 1.4rem;
@@ -388,7 +400,7 @@ section{
 
 .display-order{
    max-width: 50rem;
-   background-color: var(--white);
+   background-color: transparent;
    border-radius: .5rem;
    text-align: center;
    padding:1.5rem;
@@ -445,7 +457,7 @@ section{
 
 .order-message-container .message-container{
    width: 50rem;
-   background-color: var(--white);
+   background-color: black;
    border-radius: .5rem;
    padding:2rem;
    text-align: center;
@@ -453,11 +465,10 @@ section{
 
 .order-message-container .message-container h3{
    font-size: 2.5rem;
-   color:var(--black);
+   color:var(--white);
 }
 
 .order-message-container .message-container .order-detail{
-   background-color: var(--bg-color);
    border-radius: .5rem;
    padding:1rem;
    margin:1rem 0;
@@ -486,7 +497,7 @@ section{
 .order-message-container .message-container .customer-details p{
    padding:1rem 0;
    font-size: 2rem;
-   color:var(--black);
+   color:var(--white);
 }
 
 .order-message-container .message-container .customer-details p span{

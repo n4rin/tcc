@@ -55,7 +55,7 @@ if (isset($_POST['order_btn'])) {
          </div>
          <div class='customer-details'>
             <p> seu nome : <span>" . $name . "</span> </p>
-            <p> seu número : <span>" . $number . "</span> </p>
+            <p> seu número telefônico : <span>" . $number . "</span> </p>
             <p> seu e-mail : <span>" . $email . "</span> </p>
             <p> seu endereço : <span>" . $flat . ", " . $street . ", " . $city . ", " . $state . ", " . $country . " - " . $pin_code . "</span> </p>
             <p> seu método de pagamento : <span>" . $method . "</span> </p>
@@ -75,7 +75,8 @@ if (isset($_POST['order_btn'])) {
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>finalizar compra</title>
+   <link rel="icon" type="image/x-icon" href="../imagem/logo.PNG">
+   <title>informações de envio</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -84,9 +85,8 @@ if (isset($_POST['order_btn'])) {
    <link rel="stylesheet" href="css/style.css">
 
 </head>
-<body>
-
-<?php include 'header.php'; ?>
+<body style="background: rgb(0, 0, 0);
+    background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 62, 28, 1) 0%, rgba(0, 0, 0, 1) 100%);">
 
 <div class="container">
 
@@ -123,7 +123,7 @@ if (isset($_POST['order_btn'])) {
          </div>
          <div class="inputBox">
             <span>Número Telefonico</span>
-            <input type="number" placeholder="digite seu numero telefonico" name="number" required>
+            <input type="text" placeholder="digite seu numero telefonico" name="number" required>
          </div>
          <div class="inputBox">
             <span>E-mail</span>

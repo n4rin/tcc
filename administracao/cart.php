@@ -46,7 +46,7 @@ if (isset($_GET['delete_all'])) {
    <link rel="stylesheet" href="css/style.css">
 
 </head>
-<body style="   background: rgb(0, 0, 0);
+<body style="background: rgb(0, 0, 0);
     background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 62, 28, 1) 0%, rgba(0, 0, 0, 1) 100%);">
 <div class="container">
 
