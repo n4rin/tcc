@@ -1,0 +1,68 @@
+#achubaba {
+  display: flex;
+  color: white;
+}
+
+.btn-produtc{
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: 2px solid white;
+  margin: 10px 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+  border-radius: 25px;
+  color: white;
+  transition: .5s;
+  cursor: pointer;
+}
+
+.btn-produtc a{
+  text-decoration: none;
+  text-align: center;
+  font-weight: 500;
+  color: white;
+  font-size: 20px;
+}
+
+.btn-produtc:hover{
+  opacity: 4px;
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+/* SuperLargoDesktop (max: 4000, min: 3000) */
+@media (min-width: 3000px) and (max-width: 4000px) {
+  /* Insira os estilos específicos para superLargoDesktop aqui */
+
+}
+
+/* Desktop (max: 3000, min: 1024) */
+@media (min-width: 1024px) and (max-width: 3000px) {
+  /* Insira os estilos específicos para desktop aqui */
+
+}
+
+/* Tablet (max: 1024, min: 464) */
+@media (min-width: 464px) and (max-width: 1024px) {
+  /* Insira os estilos específicos para tablet aqui */
+
+}
+
+/* Mobile (max: 464, min: 0) */
+@media (max-width: 464px) {
+  /* Insira os estilos específicos para mobile aqui */
+
+  /* Exemplo: ajustar o tamanho do contêiner principal */
+  #achubaba {
+    width: 100%;
+    height: auto;
+  }
+}
