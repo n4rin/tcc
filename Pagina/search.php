@@ -47,60 +47,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
 </head>
 
 <body>
-    <header class="header">
-        <a href="index.php" class="logo"><img src="../imagem/logo.PNG" alt=""></a>
-        <nav class="navbar">
-            <a href="cafes.php">Cafés</a>
-            <a href="chas.php">Chás</a>
-            <a href="incensos.php">Incensos</a>
-
-        </nav>
-        <nav class="navbar2">
-
-
-            <form method="post" action="search.php">
-                <input type="text" name="query" placeholder="Pesquisar produto ou tag">
-                <input type="submit" value="Pesquisar">
-
-
-
-
-
-                <a href=" " class=" shopping"><i class='bx bx-cart shopping'></i><span class="quantity">0</span></a>
-                <a href="<?php echo isset($_SESSION['email']) ? 'perfil.php' : '#'; ?>" class="btn-user"><i class='bx bxs-user-circle'></i></a>
-            </form>
-            <?php
-            if (isset($_SESSION['email'])) {
-                // O usuário está logado, exibir o ícone/botão de logout
-                echo '<a href="logout.php" class="logout-link" style="font-size: 1.9rem;"><i class="bx bx-log-out-circle"> Sair</i></a>';
-            } else {
-            }
-            ?>
-
-            <!-- (boxicons) precisa terminar - realizar logout -->
-            <!--<a href="logout.php" class="logout-link" style="font-size: 1.9rem;"><i class='bx bx-log-out-circle'> Sair</i></a>-->
-
-            <script>
-                document.querySelector('.logout-link').addEventListener('click', function(event) {
-                    event.preventDefault();
-                    Swal.fire({
-                        title: 'Tem certeza?',
-                        text: "Você será desconectado do site!",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Sim, quero sair!',
-                        //background: '#1AD162'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.href = 'logout.php';
-                        }
-                    })
-                });
-            </script>
-
-    </header>
+<?php include '../nav/navbar.php'; ?>
 
     <section class="section">
         <div class="wrapper">
@@ -178,17 +125,9 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
             </div>
         </div>
     </section>
-    <section class="banner">
-        <div class="banner-color">
-            <div class="banner-img">
-                <div class="banner-text">
-                    <h2>Bem-vindos ao LivaTy!</h2>
-                    <p>Aqui você encontrará produtos voltados para sua saúde</p>
-                </div>
-            </div>
-        </div>
-    </section>
-<section>
+
+    <h3 style="color: white; font-size: 50px; margin-top: 90px; padding: 20px;">Produtos referentes a pesquisa:</h3>
+
     <?php
 function searchProductsByTag($tag)
 {
@@ -235,80 +174,8 @@ function searchProductsByTag($tag)
     }
     ?>
 
-</section>
+</section><br><br>
 
-    <!-- nao sei -->
-    <section>
-        <div class="blocos">
-            <div class="bloco-a">
-                <a href="#">
-                    <h3>Utensílios</h3>
-                </a>
-            </div>
-            <div class="blocos2">
-                <div class="bloco-b">
-                    <a href="#">
-                        <h3>Saúde</h3>
-                    </a>
-                </div>
-                <div class="bloco-c">
-                    <a href="#">
-                        <h3>Receitas</h3>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!--Carrinho-->
-
-
-
-
-    <!--Footer-->
-    <footer>
-        <div id="footer-content">
-            <div id="footer-contacts">
-                <h2>LIVATY</h2>
-                <p>Nos siga nas redes sociais</p>
-
-                <div id="footer-social-media">
-                    <a href="#" class="footer-link" id="instagram"><i class='bx bxl-instagram'></i></a>
-                    <a href="#" class="footer-link" id="facebook"><i class='bx bxl-facebook-square'></i></a>
-                    <a href="#" class="footer-link" id="whatsapp"><i class='bx bxl-whatsapp'></i></a>
-                </div>
-            </div>
-
-            <ul class="footer-list">
-                <li>
-                    <h3>Atendimento</h3>
-                </li>
-                <li><a href="#" class="footer-link">Formas de Pagamento</a></li>
-                <li><a href="#" class="footer-link">Catálogo</a></li>
-                <li><a href="#" class="footer-link">Institucional</a></li>
-            </ul>
-
-            <ul class="footer-list">
-                <li>
-                    <h3>Produtos</h3>
-                </li>
-                <li><a href="#" class="footer-link">Cafés</a></li>
-                <li><a href="#" class="footer-link">Chás</a></li>
-                <li><a href="#" class="footer-link">Incensos</a></li>
-            </ul>
-
-            <div id="footer-map">
-                <h3>Nossa sede:</h3>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.4530145073554!2d-47.42621522712088!3d-22.562154025640524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8806c2c324933%3A0xe2108428886c8646!2sCol%C3%A9gio%20T%C3%A9cnico%20de%20Limeira%20-%20Unicamp!5e0!3m2!1spt-BR!2sbr!4v1696366241972!5m2!1spt-BR!2sbr" width="300" height="200" style="border-radius:15px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-        <div id="footer-copyright">
-            &#169
-            2023 all rights reserved
-        </div>
-
-    </footer>
 
 
 

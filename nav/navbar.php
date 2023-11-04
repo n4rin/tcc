@@ -8,7 +8,7 @@
     </nav>
     <nav class="navbar2">
         <form method="post" action="search.php">
-            <input type="text" name="query" placeholder="Pesquisar">
+            <input type="text" name="query" placeholder="Pesquisar" style="background-color: transparent; color: white; border-color: white; border-radius: 15px; padding: 5px;">
             <input type="submit" value="Pesquisar">
 
             <?php

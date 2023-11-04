@@ -82,7 +82,7 @@ if (isset($_GET['delete_all'])) {
             <td>
                <form action="" method="post">
                   <input type="hidden" name="update_quantity_id"  value="<?php echo $fetch_cart['id']; ?>" >
-                  <input type="number" name="update_quantity" min="1"  value="<?php echo $fetch_cart['quantity']; ?>" >
+                  <input type="number" name="update_quantity" min="1"  value="<?php echo $fetch_cart['quantity']; ?>" style="background-color: transparent; color: white;">
                   <input type="submit" value="update" name="update_update_btn">
                </form>   
             </td>
