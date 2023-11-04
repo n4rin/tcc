@@ -65,7 +65,7 @@ function searchProductsByTag($tag)
 </head>
 
 <body>
-<?php include 'navbar.php'; ?>
+<?php include '../nav/navbar.php'; ?>
 
     <section class="section">
         <div class="wrapper">
@@ -208,7 +208,7 @@ function searchProductsByTag($tag)
 
 
     <!--Footer-->
-    <?php include 'footer.php'; ?>
+    <?php include '../nav/footer.php'; ?>
 
     <script src="styles.js"></script>
     <script src="carrinho.js"></script>

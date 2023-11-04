@@ -41,9 +41,9 @@
                     </div>
                     <div style=" height: 40px;">
                         <div>
-                            <p>Quantidade</p>
+                            <p>Quantidade:</p>
                             <input type="number" max="100" min="1"
-                                style="width: 80px; height: 40px; background-color: #f7f3f2; text-align: center; border-radius: 2px; border-color: #27211E;">
+                                style="width: 80px; height: 40px; background-color: transparent; color: white; text-align: center; border-radius: 2px; border-color: grey;">
                         </div>
                         <div style="height: 20px;"></div>
                         <div>
@@ -59,7 +59,7 @@
     </div><br>
 
     <!--Footer-->
-    <?php include '../Pagina/footer.php'; ?>
+    <?php include 'footer2.php'; ?>
 
     <script src="../Pagina/styles.js"></script>
     <script src="../Pagina/carrinho.js"></script>

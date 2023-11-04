@@ -67,7 +67,7 @@ function searchProductsByTag($tag)
 
 <body>
 
-<?php include 'navbar.php'; ?>
+<?php include '../nav/navbar.php'; ?>
 
     <section class="section">
         <div class="wrapper">
@@ -165,13 +165,13 @@ function searchProductsByTag($tag)
         <div class="blocos">
             <div class="bloco-a">
                 <a href="#">
-                    <h3>Utensílios</h3>
+                    <h3>Autocuidado</h3>
                 </a>
             </div>
             <div class="blocos2">
                 <div class="bloco-b">
                     <a href="#">
-                        <h3>Saúde</h3>
+                        <h3>Bebidas</h3>
                     </a>
                 </div>
                 <div class="bloco-c">
@@ -190,7 +190,7 @@ function searchProductsByTag($tag)
 
 
     <!--Footer-->
-    <?php include 'footer.php'; ?>
+    <?php include '../nav/footer.php'; ?>
 
 
 
