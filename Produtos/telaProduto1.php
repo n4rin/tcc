@@ -18,7 +18,6 @@
     <!--Inicio NavBar-->
     <?php include 'navbar2.php'; ?>
 
-
     <br>
     <div style="height: 90px;"></div>
     <div id="achubaba" class="container border border-secondary-subtle row"
@@ -59,7 +58,7 @@
     </div><br>
 
     <!--Footer-->
-    <?php include 'footer2.php'; ?>
+    <?php include '../nav/footer.php'; ?>
 
     <script src="../Pagina/styles.js"></script>
     <script src="../Pagina/carrinho.js"></script>

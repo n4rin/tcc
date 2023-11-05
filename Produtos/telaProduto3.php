@@ -59,7 +59,7 @@
     </div><br>
 
     <!--Footer-->
-    <?php include 'footer2.php'; ?>
+    <?php include '../nav/footer.php'; ?>
 
     <script src="../Pagina/styles.js"></script>
     <script src="../Pagina/carrinho.js"></script>
