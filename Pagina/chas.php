@@ -147,8 +147,8 @@ function searchProductsByTag($tag)
         <div class="banner-color">
             <div class="banner-img-chas">
                 <div class="banner-text">
-                    <h2>CHASSSSSS</h2>
-                    <p>chas chas chas chas</p>
+                    <h2>CHÁS</h2>
+                    <p>Nesta sessão você irá encontrar os melhores chás para sua tardes!!</p>
                 </div>
             </div>
         </div>

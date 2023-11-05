@@ -146,8 +146,8 @@ function searchProductsByTag($tag)
         <div class="banner-color">
             <div class="banner-img-incensos">
                 <div class="banner-text">
-                    <h2>INCENSOSSSSS</h2>
-                    <p>incestos incestos incestos</p>
+                    <h2>INCENSOS</h2>
+                    <p>Nesta sessão você irá encontrar os melhores incensos para sua residencia!!</p>
                 </div>
             </div>
         </div>

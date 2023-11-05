@@ -147,8 +147,8 @@ function searchProductsByTag($tag)
         <div class="banner-color">
             <div class="banner-img-cafes">
                 <div class="banner-text">
-                    <h2>CAFEEEEESSSS</h2>
-                    <p>cafes cafes cafes cafes</p>
+                    <h2>CAFÉS</h2>
+                    <p>Nesta sessão você irá encontrar os melhores cafés para suas manhãs!!</p>
                 </div>
             </div>
         </div>

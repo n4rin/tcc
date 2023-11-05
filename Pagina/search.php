@@ -126,7 +126,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
         </div>
     </section>
 
-    <h3 style="color: white; font-size: 50px; margin-top: 90px; padding: 20px;">Produtos referentes a pesquisa:</h3>
+    <h3 style="color: white; font-size: 35px; margin-top: 90px; padding: 20px;">Produtos referentes a pesquisa:</h3>
 
     <?php
 function searchProductsByTag($tag)
