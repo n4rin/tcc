@@ -22,57 +22,57 @@ function validarSenha($senha) {
 
 function cadastro(){
 
-if ($_SERVER["REQUEST_METHOD"] === 'POST') {
-    // Adicione aqui os outros campos que você deseja validar
-    try{
-        $cpf = $_POST["cpf"];
-        $nome = $_POST["nome"];
-        $email = $_POST["email"];
-        $senha = $_POST["senha"];
-        $dataNascimento = $_POST["dataNascimento"];
-
-    if (!$nome || !$email || !$senha || !$dataNascimento || !$cpf /* Adicione aqui os outros campos que você deseja validar */) {
-        echo "<script>document.getElementById('error-msg-cadastro').innerHTML = 'Por favor, preencha todos os campos <br>';</script>";
-     }else if (!validarSenha($senha)) {
-        echo "<script>document.getElementById('error-msg-cadastro').innerHTML = 'A senha deve ter pelo menos 8 caracteres e conter pelo menos 1 número. <br>';</script>";
-    } else {
-        // Inicia a sessão
-
-
-        include("conexaoBD.php");
-
-        $stmt = $pdo->prepare("select * from cliente where cpf = :cpf");
-        $stmt->bindParam(':cpf', $cpf);
-        $stmt->execute();
-
-        $rows = $stmt->rowCount();;
-
-        if($rows <= 0){
-            $stmt = $pdo->prepare("insert into cliente (cpf, nome, email, senha, dataNascimento) values (:cpf, :nome, :email, :senha, :dataNascimento)");
-             $stmt->bindParam(':cpf', $cpf);
-             $stmt->bindParam(':nome', $nome);
-             $stmt->bindParam(':email', $email);
-             $stmt->bindParam(':senha', $senha);
-             $stmt->bindParam(':dataNascimento', $dataNascimento);
-             $stmt->execute();
-             
-
-             echo '<script type="text/javascript">'; 
-             echo "Swal.fire('Cadastrado com sucesso!','Siga agora para a página principal do site.', 'success');";
-             echo 'setTimeout(function(){location.href="../Pagina/index.php"} , 1000);';
-             echo '</script>';
-
-        } else{
-            echo "<script>document.getElementById('error-msg-cadastro').innerHTML = 'Esse CPF já foi utilizado. <br>';</script>";
-            //echo "<span id='error'> CPF já cadastrado!</span>";
-        } }
-    } catch(PDOException $e){
-        echo 'Error: ' . $e->getMessage();
+    if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+        try{
+            $cpf = $_POST["cpf"];
+            $nome = $_POST["nome"];
+            $email = $_POST["email"];
+            $senha = $_POST["senha"];
+            $dataNascimento = $_POST["dataNascimento"];
+    
+            // Verificar se o usuário tem pelo menos 18 anos
+            $hoje = date("Y-m-d");
+            $diferenca = date_diff(date_create($dataNascimento), date_create($hoje));
+            $idade = $diferenca->format('%y');
+    
+            if (!$nome || !$email || !$senha || !$dataNascimento || !$cpf || $idade < 18) {
+                echo "<script>document.getElementById('error-msg-cadastro').innerHTML = 'Por favor, preencha todos os campos e certifique-se de que você tem pelo menos 18 anos. <br>';</script>";
+            } else if (!validarSenha($senha)) {
+                echo "<script>document.getElementById('error-msg-cadastro').innerHTML = 'A senha deve ter pelo menos 8 caracteres e conter pelo menos 1 número. <br>';</script>";
+            } else {
+                include("conexaoBD.php");
+    
+                // Verificar se o email já está cadastrado
+                $stmt = $pdo->prepare("select * from cliente where email = :email");
+                $stmt->bindParam(':email', $email);
+                $stmt->execute();
+                $rows = $stmt->rowCount();
+    
+                if($rows > 0){
+                    echo "<script>document.getElementById('error-msg-cadastro').innerHTML = 'Esse email já foi utilizado. <br>';</script>";
+                } else {
+                    $stmt = $pdo->prepare("insert into cliente (cpf, nome, email, senha, dataNascimento) values (:cpf, :nome, :email, :senha, :dataNascimento)");
+                    $stmt->bindParam(':cpf', $cpf);
+                    $stmt->bindParam(':nome', $nome);
+                    $stmt->bindParam(':email', $email);
+                    $stmt->bindParam(':senha', $senha);
+                    $stmt->bindParam(':dataNascimento', $dataNascimento);
+                    $stmt->execute();
+    
+                    echo '<script type="text/javascript">'; 
+                    echo "Swal.fire('Cadastrado com sucesso!','Siga agora para a página principal do site.', 'success');";
+                    echo 'setTimeout(function(){location.href="../Pagina/index.php"} , 1000);';
+                    echo '</script>';
+                }
+            }
+        } catch(PDOException $e){
+            echo 'Error: ' . $e->getMessage();
+        }
+        $pdo = null;
+            
+        }
     }
-    $pdo = null;
-        
-    }
-}
+    
 ?>
 
 <!DOCTYPE html>
