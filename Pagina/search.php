@@ -47,7 +47,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
 </head>
 
 <body>
-<?php include '../nav/navbar.php'; ?>
+    <?php include '../nav/navbar.php'; ?>
 
     <section class="section">
         <div class="wrapper">
@@ -129,39 +129,64 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
     <h3 style="color: white; font-size: 35px; margin-top: 90px; padding: 20px;">Produtos referentes a pesquisa:</h3>
 
     <?php
-function searchProductsByTag($tag)
-{
-    //session_start();
+    function searchProductsByTag($tag)
+    {
+        //session_start();
 
-// Inclua o arquivo de conexão com o banco de dados
+        // Inclua o arquivo de conexão com o banco de dados
 
 
-    $pdo = new PDO('mysql:host=143.106.241.3;dbname=cl201283', 'cl201283', '9rioi25sa4');
-    // Consulta SQL
-    $sql = "SELECT id, Nome, precoVenda 
+        $pdo = new PDO('mysql:host=143.106.241.3;dbname=cl201283', 'cl201283', '9rioi25sa4');
+        // Consulta SQL
+        $sql = "SELECT id, Nome, precoVenda, imagem
             FROM produto
             WHERE tag LIKE :tag";
 
-    // Preparar a consulta
-    $stmt = $pdo->prepare($sql);
+        // Preparar a consulta
+        $stmt = $pdo->prepare($sql);
 
-    // Executar a consulta
-    $stmt->execute(['tag' => '%' . $tag . '%']);
+        // Executar a consulta
+        $stmt->execute(['tag' => '%' . $tag . '%']);
 
-    // Retornar os resultados
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+        // Retornar os resultados
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    };
+
+    function searchProductsByName($nome)
+        {
+            //session_start();
+
+            // Inclua o arquivo de conexão com o banco de dados
+
+            $pdo = new PDO('mysql:host=143.106.241.3;dbname=cl201283', 'cl201283', '9rioi25sa4');
+            // Consulta SQL
+            $sql = "SELECT id, Nome, precoVenda, imagem
+            FROM produto
+            WHERE nome LIKE :nome";
+
+            // Preparar a consulta
+            $stmt = $pdo->prepare($sql);
+
+            // Executar a consulta
+            $stmt->execute(['nome' => '%' . $nome . '%']);
+
+            // Retornar os resultados
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+    
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Pesquisar produtos por tag
         $products = searchProductsByTag($_POST['query']);
+        
     ?>
         <div class="list">
             <?php
             foreach ($products as $product) {
             ?>
                 <div class="item">
-                    <img src="path/to/your/image.png" alt="Product Image">
+                    <img src=<?php echo $product['imagem']; ?>>
                     <div class="titulo"><?php echo $product['Nome']; ?></div>
                     <div class="precos">R$ <?php echo number_format($product['precoVenda'], 2, ',', '.'); ?></div>
                     <button class="btn-produtc">Comprar</button>
@@ -170,11 +195,12 @@ function searchProductsByTag($tag)
             }
             ?>
         </div>
+
     <?php
     }
     ?>
 
-</section><br><br>
+    </section><br><br>
 
 
 
