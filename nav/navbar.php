@@ -27,7 +27,7 @@
         <?php
             if (isset($_SESSION['email'])) {
                 // O usuário está logado, exibir o ícone/botão de logout
-                echo '<a href="logout.php" class="logout-link" style="font-size: 1.9rem;"><i class="bx bx-log-out-circle"> Sair</i></a>';
+                /*echo '<a href="logout.php" class="logout-link" style="font-size: 1.9rem;"><i class="bx bx-log-out-circle"> Sair</i></a>';*/
             } else {
             }
             ?>
