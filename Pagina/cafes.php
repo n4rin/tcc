@@ -156,7 +156,7 @@ function searchProductsByTag($tag)
 
     <!--Produto-->
     <section>
-        <div class="container">
+        <div class="container" style="height: 50px;">
             <h2>Linha Nestlé</h2>
             <hr>
             <div class="list"></div>

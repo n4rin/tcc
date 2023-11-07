@@ -91,10 +91,7 @@ function searchProductsByTag($tag)
                             <input type="password" name="senha" required>
                             <label>Senha</label>
                         </div>
-                        <div class="lembrar-senha">
-                            <label for=""><input type="checkbox">Lembrar-me</label>
-                            <a href="#">Esqueceu sua senha?</a>
-                        </div>
+
                         <button type="submit" class="btn">Logar</button>
                         <div class="logreg-link">
                             <p>Ainda não tem uma conta? <a href="../Login/cadastro.php" class="registro-link">Cadastre-se aqui.</a></p>
@@ -137,10 +134,7 @@ function searchProductsByTag($tag)
             </div>
 
             <div class="opcao-midia">
-                <a href="#">
-                    <i class='bx bxl-google'></i>
-                    <span>Continue with Google</span>
-                </a>
+ 
 
             </div>
         </div>

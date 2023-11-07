@@ -156,8 +156,8 @@ function searchProductsByTag($tag)
 
     <!--Produto-->
     <section>
-        <div class="container">
-            <h2>Linha Leão</h2>
+        <div class="container" style="height: 50px">
+            <h2>Cuide da saúde</h2>
             <hr>
             <div class="list"></div>
         </div>
