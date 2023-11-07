@@ -17,7 +17,7 @@
          die('query failed');
       }
       ?>
-            <a href="../administracao/cart.php" class=" shopping"><i class='bx bx-cart shopping'></i><span><?php echo $row_count; ?></span></a>
+            <a href="cart.php" class=" shopping"><i class='bx bx-cart shopping'></i><span><?php echo $row_count; ?></span></a>
             <a href="<?php echo isset($_SESSION['email']) ? 'perfil.php' : '#'; ?>" class="btn-user"><i
                     class='bx bxs-user-circle'></i></a>
         </form>
