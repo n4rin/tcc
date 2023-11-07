@@ -198,7 +198,7 @@ function searchProductsByTag($tag)
                 <img src=<?php echo $product['imagem']; ?> alt="Product Image">
                 <div class="titulo"><?php echo $product['Nome']; ?></div>
                 <div class="precos">R$ <?php echo number_format($product['precoVenda'], 2, ',', '.'); ?></div>
-                <button class="btn-produtc">Comprar</button>
+                <button href="cart.php" class="btn-produtc">Comprar</button>
             </div>
         <?php
         }
