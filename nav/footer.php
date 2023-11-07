@@ -4,7 +4,6 @@
             <div id="footer-contacts">
                 <h2>LIVATY</h2>
                 <p>Nos siga nas redes sociais</p>
-                <a href="../institucional/sobrenos.php" class="footer-link2">Sobre nós</a>
 
                 <div id="footer-social-media">
                     <a href="https://www.instagram.com/LivaTycc/" class="footer-link" id="instagram"><i class='bx bxl-instagram'></i></a>
@@ -17,7 +16,7 @@
                 <li>
                     <h3>Institucional</h3>
                 </li>
-                <li><a href="../institucional/pagamento.php" class="footer-link">Métodos de Pagamento</a></li>
+                <li><a href="../institucional/sobrenos.php" class="footer-link">Sobre Nós</a></li>
                 <li><a href="../institucional/devtroca.php" class="footer-link">Devolução e Troca</a></li>
                 <li><a href="../institucional/privacidade.php" class="footer-link">Política de Privacidade</a></li>
             </ul>
