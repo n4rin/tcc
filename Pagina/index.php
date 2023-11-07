@@ -164,8 +164,8 @@ function searchProductsByTag($tag)
     <section>
         <div class="blocos">
             <div class="bloco-a">
-                <a href="../institucional/autocuidado.php">
-                    <h3>Autocuidado</h3>
+                <a href="../institucional/saude.php">
+                    <h3>Saúde</h3>
                 </a>
             </div>
             <div class="blocos2">
