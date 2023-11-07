@@ -36,9 +36,8 @@
 </head>
 <body>
     <div class="profile">
-        <img src="perfil.jpg" alt="Foto do perfil">
-        <h2>Nome do Usuário</h2>
-        <p>@usuário</p>
+        <h2>Admin</h2>
+        <p>Administrador</p>
     </div>
     <script>
         // Adicione seu JavaScript aqui
