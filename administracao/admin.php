@@ -212,7 +212,7 @@ if (isset($message)) {
         ?>
 
                 <tr>
-                    <td><img src="uploaded_img/<?php echo $row['imagem']; ?>" height="100" alt=""></td>
+                    <td><img src="../upload/<?php echo $row['imagem']; ?>" height="100" alt=""></td>
                     <td><?php echo $row['nome']; ?></td>
                     <td>R$<?php echo $row['precoVenda']; ?>/-</td>
                     <td>
