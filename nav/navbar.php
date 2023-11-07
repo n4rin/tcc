@@ -9,7 +9,7 @@
     <nav class="navbar2">
         <form method="post" action="search.php">
             <input type="text" name="query" placeholder="Pesquisar" style="background-color: transparent; color: white; border-color: white; border-radius: 15px; padding: 5px;">
-            <input type="submit" value="ok" style="background-color: white; color: black; border-radius: 50px; font-weight: 500; widht: 40px">
+            <input type="submit" value="Ok" style="background-color: white; color: black; border-radius: 50px; font-weight: 500; widht: 40px">
 
             <?php
             @include '../administracao/config.php';
@@ -20,7 +20,7 @@
          die('query failed');
       }
       ?>
-            <a href="../administracao/cart.php" class=" shopping"><i class='bx bx-cart shopping'></i><span><?php echo $row_count; ?></span></a>
+            <a href="../administracao/cart.php" class=" shopping"><i class='bx bx-cart shopping'></i></a>
             <a href="<?php echo isset($_SESSION['email']) ? 'perfil.php' : '#'; ?>" class="btn-user"><i
                     class='bx bxs-user-circle'></i></a>
         </form>
