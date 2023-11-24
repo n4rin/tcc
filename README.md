@@ -1,5 +1,6 @@
-#Instruções
-##Seguem-se as instruções para manuseamento e manutenção do projeto LivaTy:
+# Instruções
+
+## Seguem-se as instruções para manuseamento e manutenção do projeto LivaTy:
 
 Foram utilizadas as seguintes linguagens:
 Para WEB (Site online): HTML, PHP, CSS, JAVASCRIPT (WEB)
