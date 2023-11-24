@@ -2,7 +2,7 @@
 
 ## Seguem-se as instruções para manuseamento e manutenção do projeto LivaTy:
 
-Foram utilizadas as seguintes linguagens:
+* Foram utilizadas as seguintes linguagens:
 Para WEB (Site online): HTML, PHP, CSS, JAVASCRIPT (WEB)
 
 * Para clonagem do projeto, é conveniente a utilização da função de “fork”,  localizada na página do repositório na aba CODE da plataforma github - plataforma que armazena projetos de programação, códigos e etc. - , do qual pode-se copiar os arquivos para utilizá-los à sua forma.
